@@ -9,10 +9,13 @@ class CustomDrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(text, style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
-      leading: Icon(icon, color: Theme.of(context).colorScheme.inversePrimary),
-      onTap: onTap,
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: ListTile(
+        title: Text(text, style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
+        leading: Icon(icon, color: Theme.of(context).colorScheme.inversePrimary),
+        onTap: onTap,
+      ),
     );
   }
 }

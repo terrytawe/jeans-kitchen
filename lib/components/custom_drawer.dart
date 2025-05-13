@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jeans_kitchen/components/custom_drawer_item.dart';
 
+import '../pages/settings.dart';
+
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
@@ -27,24 +29,25 @@ class CustomDrawer extends StatelessWidget {
           ),
 
           //home
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.0),
-            child: CustomDrawerItem(text: "Home", icon: Icons.home, onTap: () {}),
-          ),
+          CustomDrawerItem(text: "Home", icon: Icons.home, onTap: () => Navigator.pop(context)),
 
           //settings
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.0),
-            child: CustomDrawerItem(text: "Settings", icon: Icons.settings, onTap: () {}),
+          CustomDrawerItem(
+            text: "Settings",
+            icon: Icons.settings,
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
+              );
+            },
           ),
 
           const Spacer(),
 
           //logout
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.0),
-            child: CustomDrawerItem(text: "Logout", icon: Icons.logout, onTap: () {}),
-          ),
+          CustomDrawerItem(text: "Sign out", icon: Icons.lock, onTap: () {}),
           const SizedBox(height: 60),
         ],
       ),
