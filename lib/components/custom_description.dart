@@ -6,7 +6,10 @@ class CustomDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border: Border.all(color: Theme.of(context).colorScheme.secondary)),
+      decoration: BoxDecoration(
+        border: Border.all(color: Theme.of(context).colorScheme.secondary),
+        borderRadius: BorderRadius.circular(8),
+      ),
       padding: EdgeInsets.all(25),
       margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
       child: Row(

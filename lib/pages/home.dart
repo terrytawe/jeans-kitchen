@@ -3,6 +3,7 @@ import 'package:jeans_kitchen/components/custom_description.dart';
 import 'package:jeans_kitchen/components/custom_drawer.dart';
 import 'package:jeans_kitchen/components/custom_location.dart';
 import 'package:jeans_kitchen/components/custom_sliver_bar.dart';
+import 'package:jeans_kitchen/components/custom_tabbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +12,23 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +38,7 @@ class _HomePageState extends State<HomePage> {
         headerSliverBuilder:
             (context, innerBoxIsScrolled) => [
               CustomSliverBar(
-                title: Text("Title"),
+                title: CustomTabBar(tabController: _tabController),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -38,7 +55,19 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ],
-        body: Container(color: Colors.amber),
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            //First Child
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Vegan")),
+            //Second Child
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Meat")),
+            //Third child
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Pastries")),
+            //Fourth child
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Desserts")),
+          ],
+        ),
       ),
     );
   }

@@ -42,7 +42,10 @@ class CustomLocation extends StatelessWidget {
             child: Row(
               // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("Abidjan, mbadon", style: TextStyle(fontSize: 16)),
+                Text(
+                  "Abidjan, mbadon",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
                 Icon(Icons.keyboard_arrow_down_rounded),
               ],
             ),
