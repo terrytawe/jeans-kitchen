@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -59,13 +59,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           controller: _tabController,
           children: [
             //First Child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Vegan")),
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Salads")),
             //Second Child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Meat")),
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Meals")),
             //Third child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Pastries")),
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Sides")),
             //Fourth child
             ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Desserts")),
+            //Fifth child
+            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Drinks")),
           ],
         ),
       ),

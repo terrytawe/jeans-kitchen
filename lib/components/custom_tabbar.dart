@@ -6,18 +6,17 @@ class CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TabBar(
-        dividerColor: Theme.of(context).colorScheme.surface,
-        controller: tabController,
-        tabs: [
-          //first tab
-          Tab(text: "Vegan"),
-          Tab(text: "Meat"),
-          Tab(text: "Pastry"),
-          Tab(text: "Desserts"),
-        ],
-      ),
+    return TabBar(
+      dividerColor: Theme.of(context).colorScheme.surface,
+      controller: tabController,
+      tabs: [
+        //first tab
+        Tab(text: "Salads"),
+        Tab(text: "Meals"),
+        Tab(text: "Sides"),
+        Tab(text: "Desserts"),
+        Tab(text: "Drinks"),
+      ],
     );
   }
 }
