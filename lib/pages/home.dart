@@ -4,6 +4,9 @@ import 'package:jeans_kitchen/components/custom_drawer.dart';
 import 'package:jeans_kitchen/components/custom_location.dart';
 import 'package:jeans_kitchen/components/custom_sliver_bar.dart';
 import 'package:jeans_kitchen/components/custom_tabbar.dart';
+import 'package:jeans_kitchen/models/food.dart';
+import 'package:jeans_kitchen/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,7 +22,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: FoodCatergory.values.length, vsync: this);
   }
 
   @override
@@ -29,10 +32,30 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
+  List<Food> _filterMenuByCategory(FoodCatergory category, List<Food> foodMenu) {
+    return foodMenu.where((food) => food.catergory == category).toList();
+  }
+
+  List<Widget> getFoodInthisCategory(List<Food> fullMenu) {
+    return FoodCatergory.values.map((category) {
+      List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
+
+      return ListView.builder(
+        padding: EdgeInsets.zero,
+        itemCount: categoryMenu.length,
+        physics: NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return ListTile(title: Text(categoryMenu[index].name));
+        },
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(title: Text("Home")),
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       drawer: CustomDrawer(),
       body: NestedScrollView(
         headerSliverBuilder:
@@ -55,20 +78,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 ),
               ),
             ],
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-            //First Child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Salads")),
-            //Second Child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Meals")),
-            //Third child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Sides")),
-            //Fourth child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Desserts")),
-            //Fifth child
-            ListView.builder(itemCount: 5, itemBuilder: (context, index) => Text("Drinks")),
-          ],
+        body: Consumer<Restaurant>(
+          builder:
+              (context, restaurant, child) => TabBarView(
+                controller: _tabController,
+                children: getFoodInthisCategory(restaurant.menu),
+              ),
         ),
       ),
     );

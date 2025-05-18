@@ -16,7 +16,7 @@ class Food {
   });
 }
 
-enum FoodCatergory { burgers, salads, desserts, sides, drinks }
+enum FoodCatergory { meals, salads, sides, desserts, drinks }
 
 class Addon {
   String name;

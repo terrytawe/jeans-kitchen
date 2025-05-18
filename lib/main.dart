@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:jeans_kitchen/auth/login_or_register.dart';
+import 'package:jeans_kitchen/models/restaurant.dart';
 import 'package:jeans_kitchen/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(create: (context) => ThemeProvider(), child: const MyApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => Restaurant()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
