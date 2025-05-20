@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jeans_kitchen/components/custom_description.dart';
 import 'package:jeans_kitchen/components/custom_drawer.dart';
+import 'package:jeans_kitchen/components/custom_food_tile.dart';
 import 'package:jeans_kitchen/components/custom_location.dart';
 import 'package:jeans_kitchen/components/custom_sliver_bar.dart';
 import 'package:jeans_kitchen/components/custom_tabbar.dart';
 import 'package:jeans_kitchen/models/food.dart';
 import 'package:jeans_kitchen/models/restaurant.dart';
+import 'package:jeans_kitchen/pages/food.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,7 +47,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         itemCount: categoryMenu.length,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          return ListTile(title: Text(categoryMenu[index].name));
+          final food = categoryMenu[index];
+          return CustomFoodTile(
+            food: food,
+            onTap:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FoodPage(food: food)),
+                ),
+          );
         },
       );
     }).toList();

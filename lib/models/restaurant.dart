@@ -35,7 +35,7 @@ class Restaurant extends ChangeNotifier {
       name: "Mashed potato",
       description:
           "flame grilled chicken pieces, lettuice, tomatoes, olives, and our famous jeans salad sauce",
-      imagePath: "lib/images/salads/chicken_meal.png",
+      imagePath: "lib/images/meals/chicken_meal.png",
       price: 9.99,
       catergory: FoodCatergory.meals,
       availableAddon: [
@@ -48,7 +48,7 @@ class Restaurant extends ChangeNotifier {
       name: "Rice & prawns",
       description:
           "flame grilled chicekn pieces, lettuice, tomatoes, olives, and our famous jeans salad sauce",
-      imagePath: "lib/images/salads/rice_shrimp_meal.png",
+      imagePath: "lib/images/meals/rice_shrimp_meal.png",
       price: 9.99,
       catergory: FoodCatergory.meals,
       availableAddon: [
