@@ -1,4 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:jeans_kitchen/models/cart_item.dart';
 import 'package:jeans_kitchen/models/food.dart';
 
 class Restaurant extends ChangeNotifier {
@@ -63,6 +65,19 @@ class Restaurant extends ChangeNotifier {
   /*
   Operations 
   */
+
+  final List<CartItem> _cart = [];
+
+  //Add to cart
+  void addToCart(Food food, List<Addon> addons) {
+    //check if item exists and add quantity
+    CartItem? cartItem = _cart.firstWhereOrNull((items) {
+      // check if food is the same
+
+      // check if addons are the same
+      return null;
+    })
+  }
 
   /*
   Helpers 
