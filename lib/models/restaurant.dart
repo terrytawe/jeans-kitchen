@@ -38,11 +38,7 @@ class Restaurant extends ChangeNotifier {
       imagePath: "lib/images/meals/chicken_meal.png",
       price: 9.99,
       catergory: FoodCatergory.meals,
-      availableAddon: [
-        Addon(name: "cheese", price: 0.50),
-        Addon(name: "cucumber", price: 0.50),
-        Addon(name: "bread", price: 0.50),
-      ],
+      availableAddon: [Addon(name: "cucumber", price: 0.50), Addon(name: "bread", price: 0.50)],
     ),
     Food(
       name: "Rice & prawns",
@@ -52,9 +48,9 @@ class Restaurant extends ChangeNotifier {
       price: 9.99,
       catergory: FoodCatergory.meals,
       availableAddon: [
-        Addon(name: "cheese", price: 0.50),
-        Addon(name: "cucumber", price: 0.50),
-        Addon(name: "bread", price: 0.50),
+        Addon(name: "cheese", price: 1.50),
+        Addon(name: "cucumber", price: 2.50),
+        Addon(name: "bread", price: 0.75),
       ],
     ),
   ];

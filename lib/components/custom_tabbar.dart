@@ -17,7 +17,7 @@ class CustomTabBar extends StatelessWidget {
       dividerColor: Theme.of(context).colorScheme.surface,
       controller: tabController,
       tabs: _buildTabCategories(),
-      labelStyle: TextStyle(fontSize: 13),
+      labelStyle: TextStyle(fontSize: 15),
     );
   }
 }
