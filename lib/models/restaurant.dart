@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:jeans_kitchen/models/cart_item.dart';
@@ -79,6 +81,41 @@ class Restaurant extends ChangeNotifier {
 
       return isSameFood && isSameAddons;
     });
+
+    if (cartItem != null) {
+      cartItem.quantity++;
+    } else {
+      _cart.add(CartItem(food: food, addons: addons));
+    }
+
+    notifyListeners();
+  }
+
+  //delete Items
+  void deleteFromCart(CartItem cartItem) {
+    //
+    int cartIndex = _cart.indexOf(cartItem);
+    if (cartIndex != -1) {
+      //
+      if (_cart[cartIndex].quantity > 1) {
+        _cart[cartIndex].quantity--;
+      } else {
+        _cart.removeAt(cartIndex);
+      }
+    }
+  }
+
+  double getTotalPrice() {
+    double total = 0.0;
+    for (CartItem cartItem in _cart) {
+      double itemTotal = cartItem.food.price;
+
+      for (Addon addon in cartItem.addons) {
+        itemTotal += addon.price;
+      }
+      total += itemTotal * cartItem.quantity;
+    }
+    return total;
   }
 
   /*
