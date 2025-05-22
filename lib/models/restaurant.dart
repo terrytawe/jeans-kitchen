@@ -71,12 +71,14 @@ class Restaurant extends ChangeNotifier {
   //Add to cart
   void addToCart(Food food, List<Addon> addons) {
     //check if item exists and add quantity
-    CartItem? cartItem = _cart.firstWhereOrNull((items) {
+    CartItem? cartItem = _cart.firstWhereOrNull((item) {
       // check if food is the same
-
+      bool isSameFood = item.food == food;
       // check if addons are the same
-      return null;
-    })
+      bool isSameAddons = ListEquality().equals(item.addons, addons);
+
+      return isSameFood && isSameAddons;
+    });
   }
 
   /*
